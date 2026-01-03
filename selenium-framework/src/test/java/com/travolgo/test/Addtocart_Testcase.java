@@ -2,11 +2,9 @@ package com.travolgo.test;
 
 import java.time.Duration;
 import org.testng.Assert;
-import org.testng.ITestContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,7 +12,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterSuite;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -22,11 +19,12 @@ import org.testng.annotations.Test;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+import com.travolgo.pages.CheckoutPOM;
 import com.travolgo.pages.LoginPOM;
 import com.travolgo.pages.SearchPOM;
 
 public class Addtocart_Testcase {
-	// Do login using LoginPOM and search using SearchPOM
+
 	WebDriver driver;
 	WebDriverWait wait;
 	ExtentReports extent;
@@ -35,7 +33,6 @@ public class Addtocart_Testcase {
 	private static Logger logger = LogManager.getLogger(Addtocart_Testcase.class);
 
 	@BeforeSuite
-	// extent report use this then line 64
 	public void setupReport() {
 		String reportPath = System.getProperty("user.dir") + "/reports/Amazon_AddToCart_Report.html";
 		ExtentSparkReporter spark = new ExtentSparkReporter(reportPath);
@@ -46,19 +43,16 @@ public class Addtocart_Testcase {
 
 		extent = new ExtentReports();
 		extent.attachReporter(spark);
-		extent.setSystemInfo("Tester", "Hariprajaa");
-		extent.setSystemInfo("Environment", "QA");
-		extent.setSystemInfo("Browser", "Chrome");
-		logger.info("✅ Extent report initialized");
+		logger.info("Extent report initialized");
 	}
+
 	@BeforeTest
 	void setup() {
 		driver = new ChromeDriver();
-		wait = new WebDriverWait(driver,Duration.ofSeconds(20));
+		wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 //		driver.get("https://www.google.com");
 		driver.manage().window().maximize();
-		driver.get(
-				"https://www.amazon.in/?&tag=googhydrabk1-21&ref=pd_sl_5km84u9k2k_e&adgrpid=155259813113&hvpone=&hvptwo=&hvadid=674842289479&hvpos=&hvnetw=g&hvrand=5565983177309888141&hvqmt=e&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9062046&hvtargid=kwd-304880464215&hydadcr=14450_2316420&gad_source=1");
+		driver.get("https://www.amazon.in/?&tag=googhydrabk1-21&ref=pd_sl_5km84u9k2k_e&adgrpid=155259813113&hvpone=&hvptwo=&hvadid=674842289479&hvpos=&hvnetw=g&hvrand=5565983177309888141&hvqmt=e&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9062046&hvtargid=kwd-304880464215&hydadcr=14450_2316420&gad_source=1");
 //      driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 //		WebElement website = driver.findElement(By.id("APjFqb"));
 //		website.sendKeys("amazon.in",Keys.ENTER);
@@ -66,103 +60,66 @@ public class Addtocart_Testcase {
 //		open.click();
 //		logger.info("opened amazon");
 	}
-	@Test
-    public void Addingtocart() {
-        test = extent.createTest("Add to Cart Test");
 
-        try {
-            // LOGIN
-            WebElement loginModule = wait.until(
-                    ExpectedConditions.elementToBeClickable(
-                            By.xpath("//span[normalize-space()='Account & Lists']")));
-            loginModule.click();
+	@Test(retryAnalyzer = RetryAnalyzer.class)
+	public void Addingtocart() {
+		test = extent.createTest("Add to Cart Test");
 
-            LoginPOM ls = new LoginPOM(driver);
-            ls.Email_value("archana1575@gmail.com");
-            ls.Click_continue_button();
-            ls.Password_value("hariprajaa13");
-            ls.Click_signin_button();
+		try {
+			// LOGIN
+			WebElement loginModule = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[normalize-space()='Account & Lists']")));
+			loginModule.click();
 
-            test.pass("Logged in successfully");
+			LoginPOM ls = new LoginPOM(driver);
+			ls.Email_value("archana1575@gmail.com");
+			ls.Click_continue_button();
+			ls.Password_value("hariprajaa13");
+			ls.Click_signin_button();
 
-            // SEARCH
-            SearchPOM search = new SearchPOM(driver);
-            search.search_field("pencil box for kids");
-            test.pass("Search successful");
+			test.pass("Logged in successfully");
 
-            // ADD TO CART
-            WebElement addButton = wait.until(
-                    ExpectedConditions.elementToBeClickable(By.id("a-autoid-7-announce")));
-            addButton.click();
+			// SEARCH
+			SearchPOM search = new SearchPOM(driver);
+			search.search_field("pencil box for kids");
+			test.pass("Search successful");
 
-            // VERIFY CART COUNT
-            WebElement cartCount = wait.until(
-                    ExpectedConditions.visibilityOfElementLocated(By.id("nav-cart-count")));
-            int count = Integer.parseInt(cartCount.getText());
-            Assert.assertTrue(count > 0);
-            test.pass("Item added to cart");
+			// ADD TO CART
+			WebElement addButton = wait.until(ExpectedConditions.elementToBeClickable(By.id("a-autoid-7-announce")));
+			addButton.click();
 
-            // OPEN CART
-            WebElement cartButton = wait.until(
-                    ExpectedConditions.elementToBeClickable(
-                            By.xpath("//span[@class='nav-cart-icon nav-sprite']")));
-            cartButton.click();
+			// VERIFY CART COUNT
+			WebElement cartCount = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("nav-cart-count")));
+			int count = Integer.parseInt(cartCount.getText());
+			Assert.assertTrue(count > 0);
+			test.pass("Item added to cart");
 
-            // PROCEED TO BUY
-            WebElement buyButton = wait.until(
-                    ExpectedConditions.elementToBeClickable(
-                            By.xpath("//input[@name='proceedToRetailCheckout']")));
-            buyButton.click();
+			// checkout
+			CheckoutPOM checkout = new CheckoutPOM(driver);
 
-            WebElement continueButton1 = wait.until(
-                    ExpectedConditions.elementToBeClickable(
-                            By.xpath("/html/body/div[1]/div[1]/div/div[2]/div[2]/div/div/span[1]/span/span/span/a")));
-            continueButton1.click();
+			checkout.openCart();
+			test.pass("opened cart");
+			checkout.proceedToBuy();
+			test.pass("proceeded to buy");
+			checkout.continueAddress();
+			test.pass("clicked continue");
+			Thread.sleep(2000);
+			checkout.selectUPIAndVerify("hariprajaa05-1@okhdfcbank");
+			test.pass("upi id entered and verified");
+			checkout.continuePayment();
+			test.pass("payment request sent to user ");
 
-            // SELECT UPI RADIO BUTTON
-            WebElement radioButton = wait.until(
-                    ExpectedConditions.elementToBeClickable(
-                            By.xpath("/html/body/div[5]/div[1]/div/div/div[2]/div/div[9]/div[2]/div[2]/div/div/div[1]/form/div/div/div/div/div[5]/div/div/div/div/div[1]/div/label/input")));
-            radioButton.click();
+		} catch (Exception e) {
+			test.fail("Test failed: " + e.getMessage());
+			Assert.fail(e.getMessage());
+		}
+	}
 
-            // ENTER UPI
-            WebElement upiField = wait.until(
-                    ExpectedConditions.visibilityOfElementLocated(
-                            By.xpath("//input[@placeholder='Enter UPI ID']")));
-            upiField.sendKeys("hariprajaa05-1@okhdfcbank");
-
-            WebElement verifyButton = wait.until(
-                    ExpectedConditions.elementToBeClickable(
-                            By.xpath("//input[@name='ppw-widgetEvent:ValidateUpiIdEvent']")));
-            verifyButton.click();
-
-            // SUCCESS MESSAGE
-            wait.until(ExpectedConditions.visibilityOfElementLocated(
-                    By.xpath("//span[contains(text(),'Please press continue to complete the purchase')]")));
-
-            WebElement continueButton2 = wait.until(
-                    ExpectedConditions.elementToBeClickable(
-                            By.id("checkout-secondary-continue-button-id")));
-            continueButton2.click();
-            Thread.sleep(4000);
-            WebElement continueButton3 = wait.until(
-                    ExpectedConditions.elementToBeClickable(
-                            By.xpath("/html/body/div[5]/div[1]/div/div/div[1]/div/div[3]/div/div/form/span[1]/span/span/input")));
-            continueButton3.click();
-
-            test.pass("Checkout flow executed successfully");
-
-        } catch (Exception e) {
-            test.fail("Test failed: " + e.getMessage());
-            Assert.fail(e.getMessage());
-        }
-    }
-    @AfterSuite
-    public void tearDown() {
-        if (driver != null) {
-            // driver.quit();
-        }
-        extent.flush();
-        logger.info("Report generated");
-    }
+	@AfterSuite
+	public void tearDown() {
+		if (driver != null) {
+			// driver.quit();
+		}
+		extent.flush();
+		logger.info("Report generated");
+	}
 }

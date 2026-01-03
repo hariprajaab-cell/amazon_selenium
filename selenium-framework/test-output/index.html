@@ -129,17 +129,17 @@
                   <a name="Addingtocart">
                   </a> <!-- Addingtocart -->
                   <span class="method-name">Addingtocart</span>
-                  <div class="stack-trace">java.lang.AssertionError: Test failed: element click intercepted: Element &lt;span class=&quot;nav-cart-icon nav-sprite&quot;&gt;&lt;/span&gt; is not clickable at point (1527, 30). Other element would receive the click: &lt;span id=&quot;nav-cart-count&quot; aria-hidden=&quot;true&quot; class=&quot;nav-cart-count nav-cart-... nav-progressive-attribute nav-progressive-content&quot;&gt;1&lt;/span&gt;
+                  <div class="stack-trace">java.lang.AssertionError: element click intercepted: Element &lt;span class=&quot;nav-cart-icon nav-sprite&quot;&gt;&lt;/span&gt; is not clickable at point (1527, 30). Other element would receive the click: &lt;span id=&quot;nav-cart-count&quot; aria-hidden=&quot;true&quot; class=&quot;nav-cart-count nav-cart-... nav-progressive-attribute nav-progressive-content&quot;&gt;1&lt;/span&gt;
   (Session info: chrome=143.0.7499.170)
 Build info: version: &apos;4.11.0&apos;, revision: &apos;040bc5406b&apos;
 System info: os.name: &apos;Mac OS X&apos;, os.arch: &apos;aarch64&apos;, os.version: &apos;26.0.1&apos;, java.version: &apos;21.0.9&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [cf5d9b6563fc961a26d6a847f64a841b, clickElement {id=f.A9A25B593353E6C8D921086E7963ACB3.d.16200DE4DCC99B846E5C6CD286E1BBB8.e.502}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 143.0.7499.170, chrome: {chromedriverVersion: 143.0.7499.169 (164b20aab62..., userDataDir: /var/folders/ls/d5rccnb14d7...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:59295}, goog:processID: 19369, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: mac, proxy: Proxy(), se:cdp: ws://localhost:59295/devtoo..., se:cdpVersion: 143.0.7499.170, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Element: [[ChromeDriver: chrome on mac (cf5d9b6563fc961a26d6a847f64a841b)] -&gt; xpath: //span[@class=&apos;nav-cart-icon nav-sprite&apos;]]
-Session ID: cf5d9b6563fc961a26d6a847f64a841b
+Command: [8881d79690875bde039d9580ac9e20d9, clickElement {id=f.4E0A9118830E9D288277967F19161937.d.7A3EDB7A94E576DE259B6E6A25C006C6.e.449}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 143.0.7499.170, chrome: {chromedriverVersion: 143.0.7499.169 (164b20aab62..., userDataDir: /var/folders/ls/d5rccnb14d7...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58491}, goog:processID: 25353, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: mac, proxy: Proxy(), se:cdp: ws://localhost:58491/devtoo..., se:cdpVersion: 143.0.7499.170, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on mac (8881d79690875bde039d9580ac9e20d9)] -&gt; xpath: //span[@class=&apos;nav-cart-icon nav-sprite&apos;]]
+Session ID: 8881d79690875bde039d9580ac9e20d9
 	at org.testng.Assert.fail(Assert.java:111)
-	at com.travolgo.test.Addtocart_Testcase.Addingtocart(Addtocart_Testcase.java:138)
+	at com.travolgo.test.Addtocart_Testcase.Addingtocart(Addtocart_Testcase.java:157)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
@@ -175,7 +175,7 @@ Session ID: cf5d9b6563fc961a26d6a847f64a841b
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">/private/var/folders/ls/d5rccnb14d718d1m421dc9nr0000gp/T/testng-eclipse--1759009695/testng-customsuite.xml</span>
+            <span class="header-content">/private/var/folders/ls/d5rccnb14d718d1m421dc9nr0000gp/T/testng-eclipse--607062292/testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -228,7 +228,7 @@ data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'Addingtocart')
 data.setCell(0, 2, 'com.travolgo.test.Addtocart_Testcase')
-data.setCell(0, 3, 176646);
+data.setCell(0, 3, 151873);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
@@ -266,17 +266,17 @@ return data;
               </div> <!-- configuration-suite before -->
               <div class="configuration-test before">
                 <span class="method-name">setup</span>
-                <span class="method-start">65 ms</span>
+                <span class="method-start">67 ms</span>
               </div> <!-- configuration-test before -->
               <div class="test-method">
                 <img src="failed.png">
                 </img>
                 <span class="method-name">Addingtocart</span>
-                <span class="method-start">10737 ms</span>
+                <span class="method-start">11174 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-suite after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">192404 ms</span>
+                <span class="method-start">168082 ms</span>
               </div> <!-- configuration-suite after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

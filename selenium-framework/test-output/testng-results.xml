@@ -2,44 +2,44 @@
 <testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-01-03T15:06:07 IST" name="Default suite" finished-at="2026-01-03T15:09:15 IST" duration-ms="187323">
+  <suite started-at="2026-01-03T17:42:41 IST" name="Default suite" finished-at="2026-01-03T17:45:24 IST" duration-ms="162991">
     <groups>
     </groups>
-    <test started-at="2026-01-03T15:06:07 IST" name="Default test" finished-at="2026-01-03T15:09:15 IST" duration-ms="187323">
+    <test started-at="2026-01-03T17:42:41 IST" name="Default test" finished-at="2026-01-03T17:45:24 IST" duration-ms="162991">
       <class name="com.travolgo.test.Addtocart_Testcase">
-        <test-method is-config="true" signature="setupReport()[pri:0, instance:com.travolgo.test.Addtocart_Testcase@16ecee1]" started-at="2026-01-03T15:06:07 IST" name="setupReport" finished-at="2026-01-03T15:06:07 IST" duration-ms="62" status="PASS">
+        <test-method is-config="true" signature="setupReport()[pri:0, instance:com.travolgo.test.Addtocart_Testcase@16ecee1]" started-at="2026-01-03T17:42:41 IST" name="setupReport" finished-at="2026-01-03T17:42:41 IST" duration-ms="64" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupReport -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.travolgo.test.Addtocart_Testcase@16ecee1]" started-at="2026-01-03T15:06:07 IST" name="setup" finished-at="2026-01-03T15:06:18 IST" duration-ms="10664" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.travolgo.test.Addtocart_Testcase@16ecee1]" started-at="2026-01-03T17:42:41 IST" name="setup" finished-at="2026-01-03T17:42:52 IST" duration-ms="11099" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="Addingtocart()[pri:0, instance:com.travolgo.test.Addtocart_Testcase@16ecee1]" started-at="2026-01-03T15:06:18 IST" name="Addingtocart" finished-at="2026-01-03T15:09:15 IST" duration-ms="176646" status="FAIL">
+        <test-method signature="Addingtocart()[pri:0, instance:com.travolgo.test.Addtocart_Testcase@16ecee1]" started-at="2026-01-03T17:42:52 IST" name="Addingtocart" finished-at="2026-01-03T17:45:24 IST" duration-ms="151873" status="FAIL">
           <exception class="java.lang.AssertionError">
             <message>
-              <![CDATA[Test failed: element click intercepted: Element <span class="nav-cart-icon nav-sprite"></span> is not clickable at point (1527, 30). Other element would receive the click: <span id="nav-cart-count" aria-hidden="true" class="nav-cart-count nav-cart-... nav-progressive-attribute nav-progressive-content">1</span>
+              <![CDATA[element click intercepted: Element <span class="nav-cart-icon nav-sprite"></span> is not clickable at point (1527, 30). Other element would receive the click: <span id="nav-cart-count" aria-hidden="true" class="nav-cart-count nav-cart-... nav-progressive-attribute nav-progressive-content">1</span>
   (Session info: chrome=143.0.7499.170)
 Build info: version: '4.11.0', revision: '040bc5406b'
 System info: os.name: 'Mac OS X', os.arch: 'aarch64', os.version: '26.0.1', java.version: '21.0.9'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [cf5d9b6563fc961a26d6a847f64a841b, clickElement {id=f.A9A25B593353E6C8D921086E7963ACB3.d.16200DE4DCC99B846E5C6CD286E1BBB8.e.502}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 143.0.7499.170, chrome: {chromedriverVersion: 143.0.7499.169 (164b20aab62..., userDataDir: /var/folders/ls/d5rccnb14d7...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:59295}, goog:processID: 19369, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: mac, proxy: Proxy(), se:cdp: ws://localhost:59295/devtoo..., se:cdpVersion: 143.0.7499.170, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Element: [[ChromeDriver: chrome on mac (cf5d9b6563fc961a26d6a847f64a841b)] -> xpath: //span[@class='nav-cart-icon nav-sprite']]
-Session ID: cf5d9b6563fc961a26d6a847f64a841b]]>
+Command: [8881d79690875bde039d9580ac9e20d9, clickElement {id=f.4E0A9118830E9D288277967F19161937.d.7A3EDB7A94E576DE259B6E6A25C006C6.e.449}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 143.0.7499.170, chrome: {chromedriverVersion: 143.0.7499.169 (164b20aab62..., userDataDir: /var/folders/ls/d5rccnb14d7...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58491}, goog:processID: 25353, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: mac, proxy: Proxy(), se:cdp: ws://localhost:58491/devtoo..., se:cdpVersion: 143.0.7499.170, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on mac (8881d79690875bde039d9580ac9e20d9)] -> xpath: //span[@class='nav-cart-icon nav-sprite']]
+Session ID: 8881d79690875bde039d9580ac9e20d9]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: Test failed: element click intercepted: Element <span class="nav-cart-icon nav-sprite"></span> is not clickable at point (1527, 30). Other element would receive the click: <span id="nav-cart-count" aria-hidden="true" class="nav-cart-count nav-cart-... nav-progressive-attribute nav-progressive-content">1</span>
+              <![CDATA[java.lang.AssertionError: element click intercepted: Element <span class="nav-cart-icon nav-sprite"></span> is not clickable at point (1527, 30). Other element would receive the click: <span id="nav-cart-count" aria-hidden="true" class="nav-cart-count nav-cart-... nav-progressive-attribute nav-progressive-content">1</span>
   (Session info: chrome=143.0.7499.170)
 Build info: version: '4.11.0', revision: '040bc5406b'
 System info: os.name: 'Mac OS X', os.arch: 'aarch64', os.version: '26.0.1', java.version: '21.0.9'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [cf5d9b6563fc961a26d6a847f64a841b, clickElement {id=f.A9A25B593353E6C8D921086E7963ACB3.d.16200DE4DCC99B846E5C6CD286E1BBB8.e.502}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 143.0.7499.170, chrome: {chromedriverVersion: 143.0.7499.169 (164b20aab62..., userDataDir: /var/folders/ls/d5rccnb14d7...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:59295}, goog:processID: 19369, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: mac, proxy: Proxy(), se:cdp: ws://localhost:59295/devtoo..., se:cdpVersion: 143.0.7499.170, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Element: [[ChromeDriver: chrome on mac (cf5d9b6563fc961a26d6a847f64a841b)] -> xpath: //span[@class='nav-cart-icon nav-sprite']]
-Session ID: cf5d9b6563fc961a26d6a847f64a841b
+Command: [8881d79690875bde039d9580ac9e20d9, clickElement {id=f.4E0A9118830E9D288277967F19161937.d.7A3EDB7A94E576DE259B6E6A25C006C6.e.449}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 143.0.7499.170, chrome: {chromedriverVersion: 143.0.7499.169 (164b20aab62..., userDataDir: /var/folders/ls/d5rccnb14d7...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58491}, goog:processID: 25353, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: mac, proxy: Proxy(), se:cdp: ws://localhost:58491/devtoo..., se:cdpVersion: 143.0.7499.170, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on mac (8881d79690875bde039d9580ac9e20d9)] -> xpath: //span[@class='nav-cart-icon nav-sprite']]
+Session ID: 8881d79690875bde039d9580ac9e20d9
 at org.testng.Assert.fail(Assert.java:111)
-at com.travolgo.test.Addtocart_Testcase.Addingtocart(Addtocart_Testcase.java:138)
+at com.travolgo.test.Addtocart_Testcase.Addingtocart(Addtocart_Testcase.java:157)
 at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
@@ -72,7 +72,7 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Addingtocart -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.travolgo.test.Addtocart_Testcase@16ecee1]" started-at="2026-01-03T15:09:20 IST" name="tearDown" finished-at="2026-01-03T15:09:20 IST" duration-ms="110" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.travolgo.test.Addtocart_Testcase@16ecee1]" started-at="2026-01-03T17:45:29 IST" name="tearDown" finished-at="2026-01-03T17:45:29 IST" duration-ms="112" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
