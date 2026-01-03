@@ -20,7 +20,7 @@ public class CheckoutPOM {
 
 
     // ===== Locators =====
-    private By cartButton = By.xpath("//span[@class='nav-cart-icon nav-sprite']");
+    private By cartButton = By.xpath("/html/body/div[1]/header/div[1]/div[1]/div[3]/div/a[2]/div[1]/span[2]");
     private By proceedToBuyBtn = By.name("proceedToRetailCheckout");
 
     private By addressContinueBtn = By.xpath(
