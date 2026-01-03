@@ -28,6 +28,7 @@ import com.travolgo.pages.SearchPOM;
 public class Addtocart_Testcase {
 	// Do login using LoginPOM and search using SearchPOM
 	WebDriver driver;
+	WebDriverWait wait;
 	ExtentReports extent;
 	ExtentTest test;
 
@@ -53,6 +54,7 @@ public class Addtocart_Testcase {
 	@BeforeTest
 	void setup() {
 		driver = new ChromeDriver();
+		wait = new WebDriverWait(driver,Duration.ofSeconds(20));
 //		driver.get("https://www.google.com");
 		driver.manage().window().maximize();
 		driver.get(
@@ -64,88 +66,103 @@ public class Addtocart_Testcase {
 //		open.click();
 //		logger.info("opened amazon");
 	}
-	@Test(retryAnalyzer = RetryAnalyzer.class)
-	public void Addingtocart() {
-		test = extent.createTest("Add to Cart Test");
-		try {
-			// Login section LoginPOM
-			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-			WebElement login_module = driver.findElement(By.xpath("//span[normalize-space()='Account & Lists']"));
-			login_module.click();
-			test.info("Clicked login module");
-			LoginPOM ls = new LoginPOM(driver);
-			ls.Email_value("archana1575@gmail.com");
-			ls.Click_continue_button();
-			ls.Password_value("hariprajaa13");
-			ls.Click_signin_button();
-			test.info("Entered login credentials");
-			test.pass("Logged in successfully");
-			// Search section SearchPOM
-			SearchPOM search = new SearchPOM(driver);
-			search.search_field("pencil box for kids");
-			test.info("Searched for product");
-			test.pass("Search implemented sucessfully");
-			// Add to cart
-			WebElement add_button = driver.findElement(By.id("a-autoid-7-announce"));
-			add_button.click();
-			test.info("Clicked add to cart button");
-			// Validate cart count
-			WebElement cart_count = driver.findElement(By.xpath("//span[@id='nav-cart-count']"));
-			int cart_value = Integer.parseInt(cart_count.getText());
-			Assert.assertTrue(cart_value > 0, "Item added successfully");
-			test.pass("✅ Item successfully added to cart");
-			// go to cart
-			WebElement cart_button = driver.findElement(By.xpath("//span[@class='nav-cart-icon nav-sprite']"));
-			cart_button.click();
-			// click buy button
-			WebElement Buy_button = driver.findElement(By.xpath("//input[@name='proceedToRetailCheckout']"));
-			Buy_button.click();
-			// continue
-			WebElement continue_button = driver.findElement(
-					By.xpath("/html/body/div[1]/div[1]/div/div[2]/div[2]/div/div/span[1]/span/span/span/a"));
-			continue_button.click();
-			// radio button
-			WebElement Radio_button = driver.findElement(By.xpath(
-					"/html/body/div[5]/div[1]/div/div/div[2]/div/div[9]/div[2]/div[2]/div/div/div[1]/form/div/div/div/div/div[5]/div/div/div/div/div[1]/div/label/input"));
-			Radio_button.click();
-			// enter upi id
-			WebElement upi_id = driver.findElement(By.xpath("//input[@placeholder='Enter UPI ID']"));
-			upi_id.sendKeys("hariprajaa05-1@okhdfcbank");
-			// verify button
-			WebElement verify_button = driver
-					.findElement(By.xpath("//input[@name='ppw-widgetEvent:ValidateUpiIdEvent']"));
-			verify_button.click();
-			// click continue
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-			WebElement successMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(
-					By.xpath("//span[contains(text(),'Please press continue to complete the purchase')]")));
-			test.info("Success message appeared!");
-			// Wait until the Continue button is clickable, then click
-			WebElement continueButton = wait
-					.until(ExpectedConditions
-							.elementToBeClickable(By.xpath("//*[@id=\"checkout-secondary-continue-button-id\"]")));
-			continueButton.click();
-			test.info("Continue button clicked!");
-			Thread.sleep(2000);
-			WebElement againcontinueButton = wait
-					.until(ExpectedConditions.elementToBeClickable(By.xpath(
-							"/html/body/div[5]/div[1]/div/div/div[1]/div/div[3]/div/div/form/span[1]/span/span/input")));
-			againcontinueButton.click();
-			test.info("Continue button clicked!");
-		} catch (Exception e) {
-			test.fail("Test failed due to exception: " + e.getMessage());
-			logger.error("Test failed", e);
-			Assert.fail("Test failed: " + e.getMessage());
-		}
-	}
+	@Test
+    public void Addingtocart() {
+        test = extent.createTest("Add to Cart Test");
 
-	@AfterSuite
-	public void tearDown() {
-		// ✅ Step 4: Flush report at the end
-		if (driver != null) {
-			// driver.quit();
-		}
-		extent.flush();
-		logger.info("📄 Report generated successfully!");
-	}
+        try {
+            // LOGIN
+            WebElement loginModule = wait.until(
+                    ExpectedConditions.elementToBeClickable(
+                            By.xpath("//span[normalize-space()='Account & Lists']")));
+            loginModule.click();
+
+            LoginPOM ls = new LoginPOM(driver);
+            ls.Email_value("archana1575@gmail.com");
+            ls.Click_continue_button();
+            ls.Password_value("hariprajaa13");
+            ls.Click_signin_button();
+
+            test.pass("Logged in successfully");
+
+            // SEARCH
+            SearchPOM search = new SearchPOM(driver);
+            search.search_field("pencil box for kids");
+            test.pass("Search successful");
+
+            // ADD TO CART
+            WebElement addButton = wait.until(
+                    ExpectedConditions.elementToBeClickable(By.id("a-autoid-7-announce")));
+            addButton.click();
+
+            // VERIFY CART COUNT
+            WebElement cartCount = wait.until(
+                    ExpectedConditions.visibilityOfElementLocated(By.id("nav-cart-count")));
+            int count = Integer.parseInt(cartCount.getText());
+            Assert.assertTrue(count > 0);
+            test.pass("Item added to cart");
+
+            // OPEN CART
+            WebElement cartButton = wait.until(
+                    ExpectedConditions.elementToBeClickable(
+                            By.xpath("//span[@class='nav-cart-icon nav-sprite']")));
+            cartButton.click();
+
+            // PROCEED TO BUY
+            WebElement buyButton = wait.until(
+                    ExpectedConditions.elementToBeClickable(
+                            By.xpath("//input[@name='proceedToRetailCheckout']")));
+            buyButton.click();
+
+            WebElement continueButton1 = wait.until(
+                    ExpectedConditions.elementToBeClickable(
+                            By.xpath("/html/body/div[1]/div[1]/div/div[2]/div[2]/div/div/span[1]/span/span/span/a")));
+            continueButton1.click();
+
+            // SELECT UPI RADIO BUTTON
+            WebElement radioButton = wait.until(
+                    ExpectedConditions.elementToBeClickable(
+                            By.xpath("/html/body/div[5]/div[1]/div/div/div[2]/div/div[9]/div[2]/div[2]/div/div/div[1]/form/div/div/div/div/div[5]/div/div/div/div/div[1]/div/label/input")));
+            radioButton.click();
+
+            // ENTER UPI
+            WebElement upiField = wait.until(
+                    ExpectedConditions.visibilityOfElementLocated(
+                            By.xpath("//input[@placeholder='Enter UPI ID']")));
+            upiField.sendKeys("hariprajaa05-1@okhdfcbank");
+
+            WebElement verifyButton = wait.until(
+                    ExpectedConditions.elementToBeClickable(
+                            By.xpath("//input[@name='ppw-widgetEvent:ValidateUpiIdEvent']")));
+            verifyButton.click();
+
+            // SUCCESS MESSAGE
+            wait.until(ExpectedConditions.visibilityOfElementLocated(
+                    By.xpath("//span[contains(text(),'Please press continue to complete the purchase')]")));
+
+            WebElement continueButton2 = wait.until(
+                    ExpectedConditions.elementToBeClickable(
+                            By.id("checkout-secondary-continue-button-id")));
+            continueButton2.click();
+            Thread.sleep(4000);
+            WebElement continueButton3 = wait.until(
+                    ExpectedConditions.elementToBeClickable(
+                            By.xpath("/html/body/div[5]/div[1]/div/div/div[1]/div/div[3]/div/div/form/span[1]/span/span/input")));
+            continueButton3.click();
+
+            test.pass("Checkout flow executed successfully");
+
+        } catch (Exception e) {
+            test.fail("Test failed: " + e.getMessage());
+            Assert.fail(e.getMessage());
+        }
+    }
+    @AfterSuite
+    public void tearDown() {
+        if (driver != null) {
+            // driver.quit();
+        }
+        extent.flush();
+        logger.info("Report generated");
+    }
 }
